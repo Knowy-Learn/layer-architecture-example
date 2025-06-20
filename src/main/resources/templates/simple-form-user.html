@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inicio de Sesión</title>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-dark d-flex align-items-center justify-content-center" style="height: 100vh;">
+
+<div class="card bg-dark text-white shadow-sm p-4" style="width: 350px;">
+    <h3 class="mb-4 text-center">Iniciar Sesión</h3>
+
+    <form method="post" th:action="@{/login}" th:object="${userLoginForm}">
+        <div class="mb-3">
+            <label class="form-label" for="email">Correo Electrónico</label>
+            <input class="form-control bg-secondary text-white border-0" id="email" placeholder="ejemplo@correo.com" required
+                   th:field="*{email}" type="email">
+            <div class="invalid-feedback">
+                Por favor ingresa un correo válido.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="password">Contraseña</label>
+            <input class="form-control bg-secondary text-white border-0" id="password" minlength="6"
+                   placeholder="Contraseña" required th:field="*{password}" type="password">
+            <div class="invalid-feedback">
+                La contraseña debe tener al menos 6 caracteres.
+            </div>
+        </div>
+
+        <button class="btn btn-outline-light w-100" type="submit">Entrar</button>
+    </form>
+</div>
+
+
+</body>
+</html>

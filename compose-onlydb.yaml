@@ -1,0 +1,27 @@
+services:
+    postgres:
+        image: postgres:17
+        container_name: kne-postgres17
+        environment:
+            POSTGRES_USER: kne
+            POSTGRES_PASSWORD: kne
+            POSTGRES_DB: kne
+        ports:
+            - "5460:5432"
+        networks:
+            - knowye_net
+    pgadmin:
+        image: dpage/pgadmin4:9.4
+        container_name: kne-pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: kn@kn.com
+            PGADMIN_DEFAULT_PASSWORD: kn
+        ports:
+            - "5050:80"
+        networks:
+            - knowye_net
+        depends_on:
+            - postgres
+
+networks:
+    knowye_net:
